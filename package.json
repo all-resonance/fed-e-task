@@ -1,0 +1,19 @@
+{
+  "name": "fed-e-task-01-01",
+  "version": "1.0.0",
+  "description": "一、JavaScript执行代码的线程是单线程的，每个线程都有自己的事件循环机制：EventLoop。我们所写的代码，事件循环机制当做宏任务执行，当执行到如setTimeout、Promise.then等代码，游览器会把它添加到消息队列中等待执行，当同步的代码执行完毕之后，事件循环机制会在消息队列中去查看有没有需要执行的微任务，如果有就拿出来执行。当微任务没有了，再去查看有没有宏任务，如果有就拿出来执行。直到所有微任务和宏任务都执行完毕。setTimeout、setInterval是宏任务，Promise.then是微任务。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/xiangshilin/fed-e-task-01-01.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
