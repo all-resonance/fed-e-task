@@ -51,6 +51,7 @@ class MyPromise {
     let promise2 = new MyPromise((resolve, reject) => {
         // 根据不同状态调用不同的回调函数
         if(this.status === Fulfilled) {
+            // 因为同步是无法获取promise2的，所以这里改为异步
             setTimeout(() => {
               try {
                 const x = onFulfilled(this.value)
