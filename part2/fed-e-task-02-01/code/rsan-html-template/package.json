@@ -1,0 +1,19 @@
+{
+  "name": "rsan-pages-demo",
+  "description": "一套用于静态Web应用的自动化构建工作流。",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "zce <w@zce.me> (https://zce.me)",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rsan-pages clean",
+    "build": "rsan-pages build",
+    "develop": "rsan-pages develop"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "bootstrap": "^5.0.1",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1"
+  }
+}
