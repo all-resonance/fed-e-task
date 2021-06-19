@@ -1,0 +1,53 @@
+{
+  "name": "rsan-pages",
+  "version": "0.2.1",
+  "description": "static web app workflow",
+  "keywords": [
+    "rsan-pages",
+    "rsan"
+  ],
+  "homepage": "https://gitee.com/resonance-cli/rsan-pages",
+  "bugs": {
+    "url": "https://gitee.com/resonance-cli/rsan-pages/issues"
+  },
+  "license": "MIT",
+  "author": "resonance <295755973@qq.com> (https://resonance.fun)",
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "main": "lib/index.js",
+  "bin": "bin/rsan-pages.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/resonance-cli/rsan-pages.git"
+  },
+  "scripts": {
+    "lint": "standard --fix"
+  },
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^3.0.0",
+    "gulp-less": "^5.0.0",
+    "gulp-load-plugins": "^2.0.1",
+    "gulp-swig": "^0.9.1",
+    "gulp-uglify": "^3.0.2",
+    "gulp-useref": "^3.1.6"
+  },
+  "devDependencies": {
+    "standard": "^13.1.0"
+  },
+  "engines": {
+    "node": ">=6"
+  }
+}
