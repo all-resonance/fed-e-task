@@ -11,35 +11,40 @@ module.exports = {
   },
   module: {
     rules: [
+      // 检查代码规范化
       {
         test: /\.(vue|js)$/,
         loader: "eslint-loader",
         exclude: /node_modules/,
         enforce: "pre"
       },
+      // vue文件解析
       {
         test: /\.vue$/,
         use: ["vue-loader"]
       },
+      // js语法兼容处理
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ["babel-loader"]
       },
+      // 小图片转base64
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: "url-loader",
-        //限制最大为10k 超过10K还是按文件存储，不会转换为base64
         options: {
           limit: 10 * 1024,
-          //一定要加这个 不然src中会是一个object module
           esModule: false
         }
       }
     ]
   },
   plugins: [
+    // 解析vue文件所需要使用到的
     new VueLoaderPlugin(),
+    // 根据模版输出html文件
+    // 插件会自动将打包好的js注入到html中
     new HtmlWebpackPlugin({
       template: "./public/index.html"
     })

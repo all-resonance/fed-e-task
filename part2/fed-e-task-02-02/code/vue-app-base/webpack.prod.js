@@ -10,6 +10,7 @@ const path = require("path");
 
 module.exports = merge(common, {
   mode: "production",
+  // 去掉生产环境的sourcemap
   devtool: "none",
   output: {
     filename: "js/[name].[hash:8].js",
@@ -17,10 +18,15 @@ module.exports = merge(common, {
   },
   module: {
     rules: [
+      // 处理less
+      // 和开发环境不同的是，我们需要将样式全部抽离出来，生成单独的css样式文件
+      // 当样式内容比较多的时候，只需要请求一次样式就可以了，否则样式太多需要频繁的注入
       {
         test: /\.less$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"]
       },
+      // 处理css文件
+      // 同上
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"]
@@ -28,6 +34,8 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
+    // 根据模版生成html文件
+    // 压缩了生产环境中的html
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       favicon: "./public/favicon.ico",
@@ -38,16 +46,17 @@ module.exports = merge(common, {
         removeAttributeQuotes: true //去除属性引用
       }
     }),
+    // 定义全局变量
     new DefinePlugin({
       BASE_URL: process.env.NODE_ENV
     }),
-    //用于每次生成的时候，清理上次的打包文件
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "css/[name].[hash:7].css",
       chunkname: path.posix.join("static", "css/[id].[chunkhash:7].css")
     }),
   ],
+  // 代码优化配置
   optimization: {
     //代码分包
     splitChunks: {
@@ -55,12 +64,13 @@ module.exports = merge(common, {
     },
     minimize: true,
     minimizer: [
-      //css压缩
+      // 压缩css
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
           discardComments: { remove: true } //移除注释
         }
       }),
+      // 压缩js
       new TerserPlugin({
         parallel: true, //开启多线程来提高构建速度
         sourceMap: false,
